@@ -50,7 +50,7 @@ namespace GetData2016
             }
             catch (Exception)
             {
-                lvlMes.Text = "Has an error on xml file";
+              //  lvlMes.Text = "Has an error on xml file";
                 throw;
             }
         }

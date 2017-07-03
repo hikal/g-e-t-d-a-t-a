@@ -12,4 +12,5 @@ D:\Projects\GetData2016\GetData2016\bin\Debug\EntityFramework.xml
 D:\Projects\GetData2016\GetData2016\bin\Debug\EntityFramework.SqlServer.xml
 D:\Projects\GetData2016\GetData2016\bin\Debug\ITViec.mdf
 D:\Projects\GetData2016\GetData2016\bin\Debug\ITViec_log.ldf
-D:\Projects\GetData2016\GetData2016\obj\Debug\GetData2016.csprojResolveAssemblyReference.cache
+D:\Projects\GetData2016\GetData2016\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\GetData2016\GetData2016\bin\Debug\Newtonsoft.Json.xml

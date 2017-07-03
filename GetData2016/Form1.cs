@@ -182,6 +182,15 @@ namespace GetData2016
             lvlMes.Text = "DONE";
         }
 
-       
+        private void btnGetXeHoiChoTot_Click(object sender, EventArgs e)
+        {
+            var cls = new XeHoi();
+            cls.GetDataChoTot("a");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
