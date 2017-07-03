@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using GetData2016.Models;
 using GetData2016.Models.XeHoi;
 using Newtonsoft.Json;
@@ -22,8 +23,11 @@ namespace GetData2016
         {
             // page 1: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k
             // page 2: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&page=2&sp=0&limit=20&o=20&st=s,k           
-            
-            var results = Functions.DownLoadUrl("https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k");
+
+            var results =
+                Functions.DownLoadUrl(
+                    "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k",
+                    Encoding.UTF8);
             var json = JsonConvert.DeserializeObject<ChoTotCars>(results);
             if (json != null)
             {
@@ -31,7 +35,8 @@ namespace GetData2016
                 var ads = json.ads;
                 foreach (var ad in ads)
                 {
-                    
+                    string name =HttpUtility.HtmlEncode(ad.account_name);
+                    string id = ad.account_id;
                 }
             }            
         }
@@ -45,7 +50,7 @@ namespace GetData2016
             {
                 IList<Company> lst = new List<Company>();
 
-                string res = Functions.DownLoadUrl(string.Format(linkTpl, i));
+                string res = Functions.DownLoadUrl(string.Format(linkTpl, i), Encoding.Default);
 
                 var contentReg = new Regex(@"<div class='first-group'>[\s\S]+(?=<div id='show-more-wrapper'>)");
                 string content = contentReg.Match(res).Value;
@@ -65,7 +70,7 @@ namespace GetData2016
                         /*
                         *********** go to detail page company
                         */
-                        string detailHtml = Functions.DownLoadUrl("https://itviec.com" + href.Value);
+                        string detailHtml = Functions.DownLoadUrl("https://itviec.com" + href.Value, Encoding.Default);
 
                         string comName = string.Empty, slogan = string.Empty, desc = string.Empty
                             , webLink = string.Empty, location = string.Empty, country = string.Empty;

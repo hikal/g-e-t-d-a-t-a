@@ -10,13 +10,13 @@ namespace GetData2016
 {
     public static class Functions
     {
-        public static string DownLoadUrl(string url)
+        public static string DownLoadUrl(string url, Encoding encoding)
         {
             string res = string.Empty;
 
             try
             {
-                using (var web = new WebClient())
+                using (var web = new WebClient() { Encoding = encoding})
                 {
                     res = web.DownloadString(url);
                 }
