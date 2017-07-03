@@ -14,3 +14,6 @@ D:\Projects\GetData2016\GetData2016\bin\Debug\ITViec.mdf
 D:\Projects\GetData2016\GetData2016\bin\Debug\ITViec_log.ldf
 D:\Projects\GetData2016\GetData2016\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\GetData2016\GetData2016\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\test-git\GetData2016\bin\Debug\GetData2016.exe.config
+D:\Projects\test-git\GetData2016\obj\Debug\GetData2016.exe
+D:\Projects\test-git\GetData2016\obj\Debug\GetData2016.pdb
