@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ITViecModelStoreContainer" CdmEntityContainer="ITViecEntities">
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="ITViecModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+          <ScalarProperty Name="WebLink" ColumnName="WebLink" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

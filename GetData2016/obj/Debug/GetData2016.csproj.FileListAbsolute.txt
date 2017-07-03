@@ -1,0 +1,15 @@
+D:\Projects\GetData2016\GetData2016\bin\Debug\GetData2016.exe.config
+D:\Projects\GetData2016\GetData2016\bin\Debug\GetData2016.exe
+D:\Projects\GetData2016\GetData2016\bin\Debug\GetData2016.pdb
+D:\Projects\GetData2016\GetData2016\obj\Debug\GetData2016.Form1.resources
+D:\Projects\GetData2016\GetData2016\obj\Debug\GetData2016.Properties.Resources.resources
+D:\Projects\GetData2016\GetData2016\obj\Debug\GetData2016.csproj.GenerateResource.Cache
+D:\Projects\GetData2016\GetData2016\obj\Debug\GetData2016.exe
+D:\Projects\GetData2016\GetData2016\obj\Debug\GetData2016.pdb
+D:\Projects\GetData2016\GetData2016\bin\Debug\EntityFramework.dll
+D:\Projects\GetData2016\GetData2016\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\GetData2016\GetData2016\bin\Debug\EntityFramework.xml
+D:\Projects\GetData2016\GetData2016\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\GetData2016\GetData2016\bin\Debug\ITViec.mdf
+D:\Projects\GetData2016\GetData2016\bin\Debug\ITViec_log.ldf
+D:\Projects\GetData2016\GetData2016\obj\Debug\GetData2016.csprojResolveAssemblyReference.cache
