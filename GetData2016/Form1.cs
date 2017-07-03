@@ -185,7 +185,12 @@ namespace GetData2016
         private void btnGetXeHoiChoTot_Click(object sender, EventArgs e)
         {
             var cls = new XeHoi();
-            cls.GetDataChoTot("a");
+            int from;
+            int.TryParse(txtFromPage.Text, out from);
+            int to;
+            int.TryParse(txtToPage.Text, out to);
+
+            cls.ChoTotXeHoiGetDataXe(from, to);
         }
 
         private void Form1_Load(object sender, EventArgs e)

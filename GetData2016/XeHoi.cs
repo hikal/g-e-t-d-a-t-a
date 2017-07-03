@@ -18,26 +18,42 @@ namespace GetData2016
         }
 
         #region chotot xe
-        public void GetDataChoTot(string url)
+        public void ChoTotXeHoiGetDataXe(int fromPage, int toPage)
         {
             // page 1: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k
             // page 2: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&page=2&sp=0&limit=20&o=20&st=s,k           
 
+            string urlFormat1 = "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k";
+            string urlFormat2 = "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&page={0}&sp=0&limit=20&o=0&st=s,k";
+
+            for (int i = fromPage; i <= toPage; i++)
+            {
+                if (i == 1)
+                {
+                    ChoTotXeHoiFetchUrl(string.Format(urlFormat1));
+                }
+                else
+                {
+                    ChoTotXeHoiFetchUrl(string.Format(urlFormat2, i));
+                }
+            }
+        }
+
+        public void ChoTotXeHoiFetchUrl(string url)
+        {
             var results =
-                Functions.DownLoadUrl(
-                    "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k",
-                    Encoding.UTF8);
+               Functions.DownLoadUrl(url, Encoding.UTF8);
             var json = JsonConvert.DeserializeObject<ChoTotCars>(results);
             if (json != null)
             {
-                string s = json.total.ToString();
                 var ads = json.ads;
                 foreach (var ad in ads)
                 {
-                    string name =HttpUtility.HtmlEncode(ad.account_name);
+                    string name = HttpUtility.HtmlEncode(ad.account_name);
                     string id = ad.account_id;
                 }
-            }            
+                // insert to db
+            }
         }
         #endregion        
 
