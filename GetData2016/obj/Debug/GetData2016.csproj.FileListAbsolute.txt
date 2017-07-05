@@ -17,3 +17,6 @@ D:\Projects\GetData2016\GetData2016\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\test-git\GetData2016\bin\Debug\GetData2016.exe.config
 D:\Projects\test-git\GetData2016\obj\Debug\GetData2016.exe
 D:\Projects\test-git\GetData2016\obj\Debug\GetData2016.pdb
+D:\Projects\g-e-t-d-a-t-a\GetData2016\bin\Debug\GetData2016.exe.config
+D:\Projects\g-e-t-d-a-t-a\GetData2016\obj\Debug\GetData2016.exe
+D:\Projects\g-e-t-d-a-t-a\GetData2016\obj\Debug\GetData2016.pdb

@@ -17,6 +17,30 @@ namespace GetData2016
             
         }
 
+        #region banxehoi.com
+
+        public void BxhGetData(int fromPage, int toPage)
+        {
+            // page 1: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k
+            // page 2: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&page=2&sp=0&limit=20&o=20&st=s,k           
+
+            string urlFormat1 = "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k";
+            string urlFormat2 = "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&page={0}&sp=0&limit=20&o=0&st=s,k";
+
+            for (int i = fromPage; i <= toPage; i++)
+            {
+                if (i == 1)
+                {
+                    ChoTotXeHoiFetchUrl(string.Format(urlFormat1));
+                }
+                else
+                {
+                    ChoTotXeHoiFetchUrl(string.Format(urlFormat2, i));
+                }
+            }
+        }
+        #endregion
+
         #region chotot xe
         public void ChoTotXeHoiGetDataXe(int fromPage, int toPage)
         {
