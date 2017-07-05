@@ -12,6 +12,8 @@ namespace GetData2016
 {
     public class XeHoi
     {
+        private string _bxhDomain = "http://banxehoi.com";
+        private string _choTotDomain = "http://chotot.vn";
         public XeHoi()
         {
             
@@ -31,19 +33,44 @@ namespace GetData2016
             {
                 if (i == 1)
                 {
-                    ChoTotXeHoiFetchUrl(string.Format(urlFormat1));
+                    BxhFetchUrl(string.Format(urlFormat1));
                 }
                 else
                 {
-                    ChoTotXeHoiFetchUrl(string.Format(urlFormat2, i));
+                    BxhFetchUrl(string.Format(urlFormat2, i));
                 }
             }
         }
 
-        public void BxhFetchUrl(string url)
+        private void BxhFetchUrl(string url)
         {
-            var results =
-              Functions.DownLoadUrl(url, Encoding.UTF8);
+            var results = Functions.DownLoadUrl(url, Encoding.UTF8);
+            var linkPat = new Regex(@"(?<=class=""opensanslistauto"" href="")[\s\S]+?(?=(""))");
+            var links = linkPat.Matches(results);
+
+            foreach (Match link in links)
+            {
+                /*
+                *********** go to detail page company
+                */
+                string detailHtml = Functions.DownLoadUrl(_bxhDomain + link.Value, Encoding.UTF8);
+
+                string title = string.Empty, price = string.Empty, desc = string.Empty
+                    , webLink = string.Empty, location = string.Empty, country = string.Empty;
+
+                var titlePat = new Regex(@"(?<=<h1>)[\s\S]+?(?=(<\/h1>))");
+                title = HttpUtility.HtmlDecode(titlePat.Match(detailHtml).Value);
+
+                var descPat = new Regex(@"(?<=<div class=""desc"">)[\s\S]+?(?=(<\/div>))");
+                desc = descPat.Match(detailHtml).Value;
+
+                // <input type="hidden" id="txtPrice1" value="3899000000" />
+                var pricePat = new Regex(@"(?<=<input type=""hidden"" id=""txtPrice1"" value="")[\s\S]+?(?=(<\""/>>))");
+
+                //< input type = "hidden" id = "txtPrice1" value = "3899000000" />
+     //< input type = "hidden" id = "txtProductionYear" value = "2017" />
+          //< input type = "hidden" id = "txtSecondHand" value = "Mới" />
+            }
         }
         #endregion
 
@@ -69,7 +96,7 @@ namespace GetData2016
             }
         }
 
-        public void ChoTotXeHoiFetchUrl(string url)
+        private void ChoTotXeHoiFetchUrl(string url)
         {
             var results =
                Functions.DownLoadUrl(url, Encoding.UTF8);

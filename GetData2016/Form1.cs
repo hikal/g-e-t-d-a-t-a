@@ -190,7 +190,8 @@ namespace GetData2016
             int to;
             int.TryParse(txtToPage.Text, out to);
 
-            cls.ChoTotXeHoiGetDataXe(from, to);
+         //   cls.ChoTotXeHoiGetDataXe(from, to);
+            cls.BxhGetData(from, to);
         }
 
         private void Form1_Load(object sender, EventArgs e)
