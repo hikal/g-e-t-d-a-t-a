@@ -21,11 +21,11 @@ namespace GetData2016
 
         public void BxhGetData(int fromPage, int toPage)
         {
-            // page 1: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k
-            // page 2: https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&page=2&sp=0&limit=20&o=20&st=s,k           
+            // page 1: https://banxehoi.com/ban-xe
+            // page 2: https://banxehoi.com/ban-xe/p2          
 
-            string urlFormat1 = "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&sp=0&limit=20&o=0&st=s,k";
-            string urlFormat2 = "https://gateway.chotot.com/v1/public/ad-listing?region=&cg=2010&page={0}&sp=0&limit=20&o=0&st=s,k";
+            string urlFormat1 = "https://banxehoi.com/ban-xe";
+            string urlFormat2 = "https://banxehoi.com/ban-xe/p{0}";
 
             for (int i = fromPage; i <= toPage; i++)
             {
@@ -38,6 +38,12 @@ namespace GetData2016
                     ChoTotXeHoiFetchUrl(string.Format(urlFormat2, i));
                 }
             }
+        }
+
+        public void BxhFetchUrl(string url)
+        {
+            var results =
+              Functions.DownLoadUrl(url, Encoding.UTF8);
         }
         #endregion
 
