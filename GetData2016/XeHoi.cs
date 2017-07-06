@@ -53,10 +53,15 @@ namespace GetData2016
                 /*
                 *********** go to detail page company
                 */
-                string detailHtml = Functions.DownLoadUrl(_bxhDomain + link.Value, Encoding.UTF8);
+                string webLink = _bxhDomain + link.Value;
+                string detailHtml = Functions.DownLoadUrl(webLink, Encoding.UTF8);
 
+                #region thong tin xe coban
                 string title = string.Empty, price = string.Empty, desc = string.Empty
-                    , webLink = string.Empty, location = string.Empty, country = string.Empty;
+                    , maTin = string.Empty, ngayDang= string.Empty, namSanXuat = string.Empty
+                    , tinhTrang = string.Empty, xuatXu = string.Empty, hopSo = string.Empty
+                    , soCua = string.Empty, soChoNgoi = string.Empty, nhienLieu = string.Empty
+                    , mauXe = string.Empty, hangXe = string.Empty, dongXe = string.Empty;
 
                 var titlePat = new Regex(@"(?<=<h1>)[\s\S]+?(?=(<\/h1>))");
                 title = HttpUtility.HtmlDecode(titlePat.Match(detailHtml).Value);
@@ -64,12 +69,41 @@ namespace GetData2016
                 var descPat = new Regex(@"(?<=<div class=""desc"">)[\s\S]+?(?=(<\/div>))");
                 desc = descPat.Match(detailHtml).Value;
 
-                // <input type="hidden" id="txtPrice1" value="3899000000" />
-                var pricePat = new Regex(@"(?<=<input type=""hidden"" id=""txtPrice1"" value="")[\s\S]+?(?=(<\""/>>))");
-
                 //< input type = "hidden" id = "txtPrice1" value = "3899000000" />
-     //< input type = "hidden" id = "txtProductionYear" value = "2017" />
-          //< input type = "hidden" id = "txtSecondHand" value = "Mới" />
+                var pricePat = new Regex(@"(?<=<input type=""hidden"" id=""txtPrice1"" value="")[\s\S]+?(?=("" \/>))");
+                price = pricePat.Match(detailHtml).Value;
+                //< input type = "hidden" id = "txtProductionYear" value = "2017" />
+                var namSanXuatPat = new Regex(@"(?<=<input type=""hidden"" id=""txtProductionYear"" value="")[\s\S]+?(?=("" \/>))");
+                namSanXuat = namSanXuatPat.Match(detailHtml).Value;
+                //< input type = "hidden" id = "txtSecondHand" value = "Mới" />
+                var tinhTrangPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=("" \/>))");
+                tinhTrang = tinhTrangPat.Match(detailHtml).Value;
+
+                var ngayDangPat = new Regex(@"(?<=<span class=""lastuptime"">)[\s\S]+?(?=(<\/span>))");
+                ngayDang = ngayDangPat.Match(detailHtml).Value;
+                var maTinPat = new Regex(@"(?<=<span class=""code"">)[\s\S]+?(?=(<\/span>))");
+                maTin = maTinPat.Match(detailHtml).Value;
+
+                var xuatXuPat = new Regex(@"(?<=<label class=""madein"">Xuất xứ</label><span>: )[\s\S]+?(?=(<\/span>))");
+                xuatXu = xuatXuPat.Match(detailHtml).Value;
+                var hopSoPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                hopSo = hopSoPat.Match(detailHtml).Value;
+                var soCuaPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                soCua = soCuaPat.Match(detailHtml).Value;
+                var soChoNgoiPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                soChoNgoi = soChoNgoiPat.Match(detailHtml).Value;
+                var nhienLieuPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                nhienLieu = nhienLieuPat.Match(detailHtml).Value;
+                var mauXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                mauXe = mauXePat.Match(detailHtml).Value;
+                var hangXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                hangXe = hangXePat.Match(detailHtml).Value;
+                var dongXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                dongXe = dongXePat.Match(detailHtml).Value;
+                #endregion
+
+                #region thong tin ng ban
+                #endregion
             }
         }
         #endregion

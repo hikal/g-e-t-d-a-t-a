@@ -30,7 +30,6 @@ D:\Projects\g-e-t-d-a-t-a\GetData2016\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\g-e-t-d-a-t-a\GetData2016\bin\Debug\EntityFramework.xml
 D:\Projects\g-e-t-d-a-t-a\GetData2016\bin\Debug\EntityFramework.SqlServer.xml
 D:\Projects\g-e-t-d-a-t-a\GetData2016\bin\Debug\Newtonsoft.Json.xml
-D:\Projects\g-e-t-d-a-t-a\GetData2016\obj\Debug\GetData2016.csprojResolveAssemblyReference.cache
 D:\Projects\g-e-t-d-a-t-a\GetData2016\obj\Debug\GetData2016.Form1.resources
 D:\Projects\g-e-t-d-a-t-a\GetData2016\obj\Debug\GetData2016.Properties.Resources.resources
 D:\Projects\g-e-t-d-a-t-a\GetData2016\obj\Debug\GetData2016.csproj.GenerateResource.Cache
