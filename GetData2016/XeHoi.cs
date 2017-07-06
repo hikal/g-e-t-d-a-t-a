@@ -84,25 +84,75 @@ namespace GetData2016
                 var maTinPat = new Regex(@"(?<=<span class=""code"">)[\s\S]+?(?=(<\/span>))");
                 maTin = maTinPat.Match(detailHtml).Value;
 
-                var xuatXuPat = new Regex(@"(?<=<label class=""madein"">Xuất xứ</label><span>: )[\s\S]+?(?=(<\/span>))");
-                xuatXu = xuatXuPat.Match(detailHtml).Value;
-                var hopSoPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
-                hopSo = hopSoPat.Match(detailHtml).Value;
-                var soCuaPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
-                soCua = soCuaPat.Match(detailHtml).Value;
-                var soChoNgoiPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
-                soChoNgoi = soChoNgoiPat.Match(detailHtml).Value;
-                var nhienLieuPat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
-                nhienLieu = nhienLieuPat.Match(detailHtml).Value;
-                var mauXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
-                mauXe = mauXePat.Match(detailHtml).Value;
-                var hangXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
-                hangXe = hangXePat.Match(detailHtml).Value;
-                var dongXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
-                dongXe = dongXePat.Match(detailHtml).Value;
+                var htmlXuatXuPat = new Regex(@"<label class=""madein"">Xuất xứ<\/label>(\s+)<span>:[\s\S]+?<\/span>");
+                string htmlXuatXu = htmlXuatXuPat.Match(detailHtml).Value;
+                var xuatXuPat = new Regex(@"(?<=<span>:)[\s\S]+?(?=(<\/span>))");
+                xuatXu = xuatXuPat.Match(htmlXuatXu).Value;
+
+                var htmlHopSoPat = new Regex(@"<label class=""tranmission"">Hộp số<\/label>(\s+)<span>:[\s\S]+?<\/span>");
+                string htmlHopSo = htmlHopSoPat.Match(detailHtml).Value;
+                var hopSoPat = new Regex(@"(?<=<span>:)[\s\S]+?(?=(<\/span>))");
+                hopSo = hopSoPat.Match(htmlHopSo).Value;
+
+                var htmlsoCuaPat = new Regex(@"Số cửa<\/label>(\s+)<span>[\s\S]+?<\/span>");
+                string htmlsoCua = htmlsoCuaPat.Match(detailHtml).Value;
+                var soCuaPat = new Regex(@"(?<=<span>)[\s\S]+?(?=(<\/span>))");
+                soCua = soCuaPat.Match(htmlsoCua).Value;
+
+                var htmlSoChoNgoiPat = new Regex(@"Số chỗ<\/label>(\s+)<span>[\s\S]+?<\/span>");
+                string htmlsoChoNgoi = htmlSoChoNgoiPat.Match(detailHtml).Value;
+                var soChoNgoiPat = new Regex(@"(?<=<span>)[\s\S]+?(?=(<\/span>))");
+                soChoNgoi = soChoNgoiPat.Match(htmlsoChoNgoi).Value;
+
+                var htmlNhienLieuPat = new Regex(@"Nhiên liệu<\/label>(\s+)<span>[\s\S]+?<\/span>");
+                string htmlNhienLieu = htmlNhienLieuPat.Match(detailHtml).Value;
+                var nhienLieuPat = new Regex(@"(?<=<span>)[\s\S]+?(?=(<\/span>))");
+                nhienLieu = nhienLieuPat.Match(htmlNhienLieu).Value;
+
+                var htmlMauXePat = new Regex(@"Màu xe<\/label>(\s+)<span>[\s\S]+?<\/span>");
+                string htmlMauXe = htmlMauXePat.Match(detailHtml).Value;
+                var mauxePat = new Regex(@"(?<=<span>)[\s\S]+?(?=(<\/span>))");
+                mauXe = mauxePat.Match(htmlMauXe).Value;
+
+                //var hangXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                //hangXe = hangXePat.Match(detailHtml).Value;
+                //var dongXePat = new Regex(@"(?<=<input type=""hidden"" id=""txtSecondHand"" value="")[\s\S]+?(?=(""<\""/>))");
+                //dongXe = dongXePat.Match(detailHtml).Value;
+                #endregion
+
+                #region thong so kt chung chung
+                // data return extra </div>, should be add <div> at begin
+                var thongSoCoBanPat = new Regex(@"
+                        (?<=<div class=""titlebox"">Thông số cơ bản<\/div>)[\s\S]+?(?=(<div class=""techinfo mgb15"">))");
+                string thongSoCoBan = "<div>" + thongSoCoBanPat.Match(detailHtml).Value;
+                
+                // data return extra </div>, should be add <div> at begin
+                var thongSoKtPat = new Regex(@"
+                                (?<=<div class=""titlebox"">Thông số kỹ thuật<\/div>)[\s\S]+?(?=(<div class=""extendinfo mgb15"">))");
+                string thongSoKt = "<div>" + thongSoKtPat.Match(detailHtml).Value;
+                
+                // data return extra </div></div>, should be add <div><div> at begin
+                var tienNghiPat = new Regex(@"
+                                        (?<=<div class=""titlebox"">Tiện nghi<\/div>)[\s\S]+?(?=(<div class=""contact"">))");
+                string tienNghi = "<div><div>"+ tienNghiPat.Match(detailHtml).Value;
                 #endregion
 
                 #region thong tin ng ban
+                // < input id = "mailto" value = "nguyenlong.dang91@gmail.com" type = "hidden" >
+                var emailPat = new Regex(@"(?<=<input id=""mailto"" value="")[\s\S]+?(?=("" type=""hidden"" \/>))");
+                string email = emailPat.Match(detailHtml).Value;
+                var fullNamePat = new Regex(@"(?<=<div class=""fullname"">)[\s\S]+?(?=(<\/div>))");
+                string fullName = fullNamePat.Match(detailHtml).Value;
+                if (fullName.IndexOf("</a>") != -1)
+                {
+                    // showroom
+                    var patSmall = new Regex(@"(?<=>)[\s\S]+?(?=(</a>))");
+                    fullName = patSmall.Match(fullName).Value;
+                }
+                var addressPat = new Regex(@"(?<=<div class=""address"">)[\s\S]+?(?=(<\/div>))");
+                string address = addressPat.Match(detailHtml).Value;
+                var phonePat = new Regex(@"(?<=<div class=""mobile"">)[\s\S]+?(?=(<\/div>))");
+                string phone = phonePat.Match(detailHtml).Value;
                 #endregion
             }
         }
