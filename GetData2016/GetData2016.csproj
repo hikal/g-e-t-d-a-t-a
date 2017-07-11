@@ -85,6 +85,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions.cs" />
+    <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Company.cs">
       <DependentUpon>ITViec.tt</DependentUpon>
     </Compile>
@@ -103,6 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ITViec.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\XeHoi\Car.cs" />
     <Compile Include="Models\XeHoi\ChoTotCar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,6 +147,9 @@
   <ItemGroup>
     <Content Include="bin\Debug\ItViec.xml" />
     <Content Include="ChoTotXeHoiDemoData.txt" />
+    <Content Include="Data\AttributesMapped.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ITViec.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

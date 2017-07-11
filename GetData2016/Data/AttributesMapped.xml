@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <site id="ban-xe-hoi">
+    <att name="tinh-trang">
+      <item id="1" keyText="moi"></item>
+      <item id="2" keyText="cu"></item>
+    </att>
+    <att name="xuat-xu">
+      <item id="1" keyText="trong-nuoc"></item>
+      <item id="2" keyText="nhap-khau"></item>
+    </att>
+    <att name="hop-so">
+      <item id="1" keyText="so-tay"></item>
+      <item id="2" keyText="so-tu-dong"></item>
+      <item id="3" keyText="so-hon-hop"></item>
+    </att>
+    <att name="nhien-lieu">
+      <item id="1" keyText="xang"></item>
+      <item id="2" keyText="diesel"></item>
+      <item id="3" keyText="hybrid"></item>
+      <item id="4" keyText="dien"></item>
+      <item id="5" keyText="loai-khac"></item>
+    </att>
+    <att name="mau-sac">
+      <item id="1" keyText="den"></item>
+      <item id="2" keyText="bac"></item>
+      <item id="3" keyText="vang"></item>
+      <item id="4" keyText="xanh-luc"></item>
+      <item id="5" keyText="xam-ghi"></item>
+      <item id="6" keyText="hai-mau"></item>
+      <item id="7" keyText="trang"></item>
+      <item id="8" keyText="do"></item>
+      <item id="9" keyText="kem-be"></item>
+      <item id="10" keyText="tim"></item>
+      <item id="11" keyText="nau"></item>
+      <item id="12" keyText="mau-khac"></item>
+    </att>
+  </site>
+</root>
+

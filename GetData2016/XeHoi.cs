@@ -13,6 +13,8 @@ namespace GetData2016
     public class XeHoi
     {
         private string _bxhDomain = "http://banxehoi.com";
+        private const string _bxhKeyText = "ban-xe-hoi";
+
         private string _choTotDomain = "http://chotot.vn";
         public XeHoi()
         {
